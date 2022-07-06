@@ -16,8 +16,8 @@ from flask import Flask, render_template
 app = Flask(
     __name__,
     template_folder='templates',  # Name of html file folder
-    static_folder='static'  # Name of directory for static files
-)
+    static_folder='static',  # Name of directory for static files
+    static_url_path='/static')
 ok_chars = string.ascii_letters + string.digits
 
 # Create Compress with default params
@@ -30,71 +30,122 @@ compress.init_app(app)
 def base_page():
     from bs4 import BeautifulSoup
     import requests
+    from lxml import etree
+
     URL = "https://mmic.org.uk"
-    r = requests.get(URL)
 
-    soup = BeautifulSoup(r.content, 'html5lib')
+    HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
+            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
+            'Accept-Language': 'en-US, en;q=0.5'})
 
-    file = open("mmic2.html", "w")
-    file.write(soup.prettify())
-    file.close
+    webpage = requests.get(URL, headers=HEADERS)
+    soup = BeautifulSoup(webpage.content, "html.parser")
+    dom = etree.HTML(str(soup))
 
-    URL2 = "https://westwoodmosque.org"
-    r2 = requests.get(URL2)
-
-    soup2 = BeautifulSoup(r2.content, 'html5lib')
-
-    file2 = open("mmic3.html", "w")
-    file2.write(soup2.prettify())
-    file2.close
-
-    import linecache
-    date = linecache.getline(r"mmic2.html", 956)
+    date = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/div/div/p'
+    )[0].text
     date = date.replace(" - Oldham, UK", "")
 
-    fajr = linecache.getline(r"mmic2.html", 973)
-    fajrj = linecache.getline(r"mmic2.html", 976)
+    fajr = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[1]/span[2]'
+    )[0].text
+    fajrj = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[1]/i'
+    )[0].text
     fajrj = fajrj.replace("Jama'at: ", "")
-    fajrj = "4:00 AM"
-  
-    mysun = linecache.getline(r"mmic3.html", 674)
-    mysun = mysun+" AM"
-    mysun = "5:00 AM"
 
-    zuhr = linecache.getline(r"mmic2.html", 984)
-    zuhrj = linecache.getline(r"mmic2.html", 987)
+    zuhr = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[2]/span[2]'
+    )[0].text
+    zuhrj = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[2]/i'
+    )[0].text
     zuhrj = zuhrj.replace("Jama'at: ", "")
 
-    asr = linecache.getline(r"mmic2.html", 995)
-    asrj = linecache.getline(r"mmic2.html", 998)
+    asr = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[3]/span[2]'
+    )[0].text
+    asrj = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[3]/i'
+    )[0].text
     asrj = asrj.replace("Jama'at: ", "")
 
-    maghrib = linecache.getline(r"mmic2.html", 1006)
-    maghribj = linecache.getline(r"mmic2.html", 1009)
+    maghrib = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[4]/span[2]'
+    )[0].text
+    maghribj = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[4]/i'
+    )[0].text
     maghribj = maghribj.replace("Jama'at: ", "")
 
-    isha = linecache.getline(r"mmic2.html", 1017)
-    ishaj = linecache.getline(r"mmic2.html", 1020)
+    isha = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[5]/span[2]'
+    )[0].text
+    ishaj = dom.xpath(
+        '//*[@id="home-prayer-times-block"]/div/section/div/div/div/ul/li[5]/i'
+    )[0].text
     ishaj = ishaj.replace("Jama'at: ", "")
 
+    ##FOR FETCHING SUNRISE
+    URL = "https://ocmic.org.uk"
+
+    HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
+            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
+            'Accept-Language': 'en-US, en;q=0.5'})
+
+    webpage = requests.get(URL, headers=HEADERS)
+    soup = BeautifulSoup(webpage.content, "html.parser")
+    dom = etree.HTML(str(soup))
+    mysun = dom.xpath(
+        '//*[@id="page-content"]/div[1]/div/div/div/div[2]/div/div/div[2]/div[2]/div[1]'
+    )[0].text
+
+    ##FOR FETCHING Ayah of the Day
+    URL = "https://ayahaday.com/"
+
+    HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
+            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
+            'Accept-Language': 'en-US, en;q=0.5'})
+
+    webpage = requests.get(URL, headers=HEADERS)
+    soup = BeautifulSoup(webpage.content, "html.parser")
+    #surah = soup.find('h1', class_='AyahText_surah__2HmXc')
+    #ayah_num = dom.xpath('//*[@id="__next"]/div/div/div[2]/h2')[0].text
+    #ayah = dom.xpath('//*[@id="__next"]/div/div/div[2]')[0].text
+    #ayah_en = dom.xpath('//*[@id="__next"]/div/div/div[2]/p[2]')[0].text
+
+    #print(surah)
+    #print(ayah_num)
+    #print(ayah)
+    #print(ayah_en)
+
+    #IS IT YAWMUL-JUMUAH?
     import datetime
     weekday = datetime.datetime.today().weekday()
     if weekday == 4:
-      jumuah = "Jumu'ah"
+        jumuah = "Jumu'ah"
     else:
-      jumuah = "Zuhr"
+        jumuah = "Zuhr"
 
+    #TIMESTAMP OF WHEN EACH JAMAT HAPPENS
     from datetime import datetime
 
     d = datetime.today().strftime("%b %d, %Y")
 
     def timeConversion(s):
-      in_time = datetime.strptime(m2, "%I:%M %p")
-      #print(in_time)
-      out_time = datetime.strftime(in_time, "%H:%M:%S")
-      return out_time
+        in_time = datetime.strptime(m2, "%I:%M %p")
+        #print(in_time)
+        out_time = datetime.strftime(in_time, "%H:%M:%S")
+        return out_time
+
     m2 = " ".join(fajrj.split())
     fajrc = timeConversion(m2)
+    m2 = " ".join(mysun.split())
+    mysunc = timeConversion(m2)
     m2 = " ".join(zuhrj.split())
     zuhrc = timeConversion(m2)
     m2 = " ".join(asrj.split())
@@ -104,14 +155,17 @@ def base_page():
     m2 = " ".join(ishaj.split())
     ishac = timeConversion(m2)
 
-    fajrc = d+" "+fajrc
-    zuhrc = d+" "+zuhrc
-    asrc = d+" "+asrc
-    maghribc = d+" "+maghribc
-    ishac = d+" "+ishac
+    fajrc = d + " " + fajrc
+    mysunc = d + " " + mysunc
+    zuhrc = d + " " + zuhrc
+    asrc = d + " " + asrc
+    maghribc = d + " " + maghribc
+    ishac = d + " " + ishac
 
-    print(ishac)
-    
+    print("Assalamu Alaikum, today's date is:")
+    print(date)
+    print("Wrong date? email ukasa1@proton.me")
+
     return render_template('base.html',
                            date=date,
                            fajr=fajr,
@@ -127,6 +181,7 @@ def base_page():
                            ishaj=ishaj,
                            jumuah=jumuah,
                            fajrc=fajrc,
+                           mysunc=mysunc,
                            zuhrc=zuhrc,
                            asrc=asrc,
                            maghribc=maghribc,
