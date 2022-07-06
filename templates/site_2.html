@@ -1,0 +1,83 @@
+<center>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet'>
+</head>
+
+<script>
+function digi() {
+  var date = new Date(),
+      hour = date.getHours(),
+      minute = checkTime(date.getMinutes()),
+      ss = checkTime(date.getSeconds());
+
+  function checkTime(i) {
+    if( i < 10 ) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
+if ( hour > 12 ) {
+  hour = hour - 12;
+  if ( hour == 12 ) {
+    hour = checkTime(hour);
+  document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" AM";
+  }
+  else {
+    hour = checkTime(hour);
+    document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" PM";
+  }
+}
+else {
+  document.getElementById("tt").innerHTML = hour+":"+minute+":"+ss+" AM";;
+}
+var time = setTimeout(digi,1000);
+}
+</script>
+
+<style>
+body {
+  color: white;
+  background-color:Black;
+  font-family: 'Philosopher';
+}
+</style>
+
+<body onload="digi()">
+  <br>
+  <!--<body style="background-image: url(https://mmic.org.uk/wp-content/themes/tabligh/assets/images/sec-bg3.jpg);"></body>-->
+
+  <img src="https://mmic.org.uk/wp-content/uploads/2021/03/MMICLogoWhite248x200.png"
+  width="124"
+  height="100">
+  <h1 id="tt"></h1>
+  <!--<p><script>document.write(new Date().toLocaleDateString('en-gb', { weekday:"long", year:"numeric", month:"long", day:"numeric"})) </script></p>-->
+
+  <div style="width: 100%;">
+    <div style="width: 50%; height: 150px; float: left; border-style:solid;border-color:white;border-radius: 25px;"> 
+      <br>
+      <b>Funeral Services</b>
+      <font size="1">
+      <br><br>We provide a discrete professional service at this difficult and sensitive time.
+      <br>Our services include:
+      <br><br>Burials throughout North of England, Transportation of bodies abroad,
+      <br>Janaza organised, Shirni for distribution, Headstones, Coffins, Ghusl & Kaffan service.
+      <br><br><br><b>ommfuneralservice@gmail.com || 07818172855</b></font>
+
+    </div>
+    <div style="margin-left: 51%; height: 150px; border-style:solid;border-color:white;border-radius: 25px;"> 
+      <br>
+      <b>Maktab Classes</b>
+      <font size="1">
+      <br><br>Monday to Friday
+      <br>Darul Qirat, Qaidah, Sipara, Qur'an, Salah, Hifz
+      <br>
+      <br>Ensuring our children are learning about our Deen is vital to their development.
+      <br>We have experienced Imams with structured learning to serve the <br>children of our community.
+      <br><br><b>info@mmic.org.uk || fb.com/mmicoldham</b>
+    </font>
+    </div>
+  </div>
+  <br>
+  <a href="/">mmic.org.uk</a>
+</center>
