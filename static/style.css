@@ -1,0 +1,74 @@
+* {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+body {
+  zoom: 1.5;
+  font-size: 150%;
+  color: white;
+  font-family: 'Philosopher';
+  background-color: #000022;
+/*         background-image: radial-gradient(circle farthest-corner at 16.5% 28.1%, #00223b 0%, black 90%);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;*/
+  height: 500px;
+}
+
+/*@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
+.mySlides {
+  width: 100%;
+  height: 340px;
+  float: center;
+  border-radius: 60px;
+  margin:auto;
+
+}
+
+.myWidgets {
+  width: 100%;
+}
+
+.slideshow-container {
+  width: 98%;
+  height: 340px;
+  float: center;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+}

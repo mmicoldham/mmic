@@ -1,4 +1,6 @@
-import random, string
+# بسم الله الرحمن الرحيم
+
+import string
 
 # -*- coding: utf-8 -*-
 # Import Monkey module from gevent for monkey-patching
@@ -36,7 +38,7 @@ def base_page():
 
     HEADERS = ({'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
-            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
+            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ,\
             'Accept-Language': 'en-US, en;q=0.5'})
 
     webpage = requests.get(URL, headers=HEADERS)
@@ -88,31 +90,34 @@ def base_page():
     )[0].text
     ishaj = ishaj.replace("Jama'at: ", "")
 
+    fajrj = "6:45 AM"
+    mysun = "7:30 AM"
+    zuhrj = "1:00 PM"
+    asrj = "2:45 PM"
+    ishaj = "7:15 PM"
+
     ##FOR FETCHING SUNRISE
-    URL = "https://ocmic.org.uk"
+    # url = "https://www.timeanddate.com/sun/uk/oldham"
+    # html_content = requests.get(url).text
 
-    HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
-            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
-            'Accept-Language': 'en-US, en;q=0.5'})
+    # soup = BeautifulSoup(html_content, "lxml")
 
-    webpage = requests.get(URL, headers=HEADERS)
-    soup = BeautifulSoup(webpage.content, "html.parser")
-    dom = etree.HTML(str(soup))
-    mysun = dom.xpath(
-        '//*[@id="page-content"]/div[1]/div/div/div/div[2]/div/div/div[2]/div[2]/div[1]'
-    )[0].text
+    # rows = soup.find_all('td')
+    #mysun = rows[5].text
+    ##mysun = mysun[:4]
+    #mysun = mysun + " AM"
+    # print(mysun)
 
     ##FOR FETCHING Ayah of the Day
-    URL = "https://ayahaday.com/"
+    # URL = "https://ayahaday.com/"
 
-    HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
-            (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                            ,\
-            'Accept-Language': 'en-US, en;q=0.5'})
+    # HEADERS = ({'User-Agent':
+    #         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
+    #         (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ,\
+    #         'Accept-Language': 'en-US, en;q=0.5'})
 
-    webpage = requests.get(URL, headers=HEADERS)
-    soup = BeautifulSoup(webpage.content, "html.parser")
+    # webpage = requests.get(URL, headers=HEADERS)
+    # soup = BeautifulSoup(webpage.content, "html.parser")
     #surah = soup.find('h1', class_='AyahText_surah__2HmXc')
     #ayah_num = dom.xpath('//*[@id="__next"]/div/div/div[2]/h2')[0].text
     #ayah = dom.xpath('//*[@id="__next"]/div/div/div[2]')[0].text
@@ -127,7 +132,7 @@ def base_page():
     import datetime
     weekday = datetime.datetime.today().weekday()
     if weekday == 4:
-        jumuah = "Jumu'ah"
+        jumuah = "Jumu’ah"
     else:
         jumuah = "Zuhr"
 
@@ -135,6 +140,7 @@ def base_page():
     from datetime import datetime
 
     d = datetime.today().strftime("%b %d, %Y")
+    print(d)
 
     def timeConversion(s):
         in_time = datetime.strptime(m2, "%I:%M %p")
@@ -162,9 +168,11 @@ def base_page():
     maghribc = d + " " + maghribc
     ishac = d + " " + ishac
 
-    print("Assalamu Alaikum, today's date is:")
+    print("today's date is:")
     print(date)
-    print("Wrong date? email ukasa1@proton.me")
+
+    # print(date, fajr, fajrj, mysun, zuhr, zuhrj, asr, asrj, maghrib, maghribj,
+    #       isha, ishaj, jumuah, fajrc, mysunc, zuhrc, asrc, maghribc, ishac)
 
     return render_template('base.html',
                            date=date,
@@ -188,11 +196,11 @@ def base_page():
                            ishac=ishac)
 
 
-@app.route('/2')
-def page_2():
-    rand_ammnt = random.randint(10, 100)
-    random_str = ''.join(random.choice(ok_chars) for a in range(rand_ammnt))
-    return render_template('site_2.html', random_str=random_str)
+# @app.route('/2')
+# def page_2():
+#     rand_ammnt = random.randint(10, 100)
+#     random_str = ''.join(random.choice(ok_chars) for a in range(rand_ammnt))
+#     return render_template('site_2.html', random_str=random_str)
 
 
 if __name__ == '__main__':
