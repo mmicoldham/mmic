@@ -14,37 +14,42 @@
 <center>
   <body>
     
-    <script src="static/jquery-3.6.1.slim.min.js"></script>
-    <script src="static/jquery.hijri.date.js"></script>
+    <script src="static/jquery-3.6.1.min.js"></script>
+    <script src="static/jquery.hijri.date.min.js"></script>
     <script>
-      $(function(){
-        $('.hijri').hijriDate({
-          showGregDate:true,
-          weekDayLang: 'en',
-          hijriLang: 'en',
-          gregLang: 'en',
-          correction: 1,
-        });
-      });
+      // $(function(){
+      //   $('.hijri').hijriDate({
+      //     // showGregDate:true,
+      //     weekDayLang: 'en',
+      //     hijriLang: 'en',
+      //     gregLang: 'en',
+      //     // correction: 1,
+      //   });
+      // });
     </script>
     
      
     <!--START OF CONTENT-->
     <br>
-    <img class="myclass" src="https://mmic.org.uk/wp-content/uploads/2021/03/MMICLogoWhite248x200.png"
-      style="width:170px;height:auto;" />
+    <img class="myclass" src="static/MMICLogo.svg"
+      style="width:170px;height:auto;filter: invert(100%) sepia(16%) saturate(7497%) hue-rotate(282deg) brightness(125%) contrast(109%);" />
 
     <br />
     <div id="clockdate">
       <div class="clockdate-wrapper"><b>
         <div id="clock" style="font-size: 400%"></div>
-        <div id="date" style="font-size: 150%" hidden></div>
-        <div class="hijri" style="font-size: 150%;"></div>
+        <b class="hijri" style="font-size: 150%;"></b><b> - </b><b id="date" style="font-size: 150%"></b>
+        
       </div></b>
     </div>
     
     <br height="10px">
     <div class="slideshow-container" style="margin:auto;">
+
+<!--       <div class="mySlides fade"
+        style="margin:auto;background-image: url('static/monthly.png');background-position: center;">
+      </div> -->
+      
       <div class="mySlides fade" style="background-image: url('static/background.png');
   background-position: right;
   overflow-x:auto;">
@@ -82,6 +87,7 @@
             <p id="asrc" hidden>{{asrc}}</p>
             <p id="maghribc" hidden>{{maghribc}}</p>
             <p id="ishac" hidden>{{ishac}}</p>
+            <p id="fajrt" hidden>{{fajrt}}</p>
           </tr>
         </table>
         <br>
@@ -92,9 +98,6 @@
           <b style="font-size:250%;">mmic.org.uk</b>
         </div> -->
       </div>
-<!--       <div class="mySlides fade"
-        style="margin:auto;background-image: url('static/daylight.png');background-position: right;">
-      </div> -->
     </div>
 
     <div style="text-align:center">
@@ -104,6 +107,6 @@
       <span class="dot2"></span>
     </div>
     <div class="example"></div>
-    <script src="static/slideshow.js"></script>
+    <script src="static/script.js"></script>
   </body>
 </center>
