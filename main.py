@@ -90,8 +90,8 @@ def base_page():
     )[0].text
     ishaj = ishaj.replace("Jama'at: ", "")
 
-    fajrj = "6:45 AM"
-    mysun = "7:30 AM"
+    fajrj = "7:30 AM"
+    mysun = "8:16 AM"
     zuhrj = "1:00 PM"
     asrj = "2:45 PM"
     ishaj = "7:15 PM"
@@ -137,10 +137,12 @@ def base_page():
         jumuah = "Zuhr"
 
     #TIMESTAMP OF WHEN EACH JAMAT HAPPENS
-    from datetime import datetime
+    from datetime import datetime, timedelta
 
     d = datetime.today().strftime("%b %d, %Y")
     print(d)
+    d2 = datetime.today() + timedelta(1)
+    d2 = d2.strftime("%b %d, %Y")
 
     def timeConversion(s):
         in_time = datetime.strptime(m2, "%I:%M %p")
@@ -160,6 +162,9 @@ def base_page():
     maghribc = timeConversion(m2)
     m2 = " ".join(ishaj.split())
     ishac = timeConversion(m2)
+    m2 = " ".join(fajrj.split())
+    fajrt = timeConversion(m2)
+    
 
     fajrc = d + " " + fajrc
     mysunc = d + " " + mysunc
@@ -167,10 +172,11 @@ def base_page():
     asrc = d + " " + asrc
     maghribc = d + " " + maghribc
     ishac = d + " " + ishac
+    fajrt = d2 + " " + fajrt
 
     print("today's date is:")
     print(date)
-
+  
     # print(date, fajr, fajrj, mysun, zuhr, zuhrj, asr, asrj, maghrib, maghribj,
     #       isha, ishaj, jumuah, fajrc, mysunc, zuhrc, asrc, maghribc, ishac)
 
@@ -193,7 +199,8 @@ def base_page():
                            zuhrc=zuhrc,
                            asrc=asrc,
                            maghribc=maghribc,
-                           ishac=ishac)
+                           ishac=ishac,
+                           fajrt=fajrt)
 
 
 # @app.route('/2')
