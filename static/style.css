@@ -9,16 +9,18 @@
 body {
   zoom: 1.5;
   font-size: 150%;
+/*   color: #00313c; */
   color: white;
   font-family: 'Philosopher';
-  background-color: #000022;
-/*         background-image: radial-gradient(circle farthest-corner at 16.5% 28.1%, #00223b 0%, black 90%);
+/*   background-color: #000022; */
+  background-image: radial-gradient(circle farthest-corner at 16.5% 28.1%, #00223b 0%, black 90%);
+/*   background-color: #8ad7ec; */
   background-size: 400% 400%;
-  animation: gradient 30s ease infinite;*/
+  animation: gradient 30s ease infinite;
   height: 500px;
 }
 
-/*@keyframes gradient {
+/* @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -38,7 +40,6 @@ body {
   float: center;
   border-radius: 60px;
   margin:auto;
-
 }
 
 .myWidgets {
