@@ -7,69 +7,73 @@
 } */
 
 body {
-  zoom: 1.5;
+  zoom: 1;
   font-size: 150%;
   /*   color: #00313c; */
   color: white;
   font-family: "Philosopher";
-  /*   background-color: #003025 and 00302e; */
+    /* background-color: #001524; */
   background-image: radial-gradient(
     circle farthest-corner at 16.5% 28.1%,
     #001524 0%,
     black 90%
   );
-  /*   background-color: #8ad7ec; */
-  background-size: 200% 100%;
-  animation: gradient 30s ease infinite;
+
+  /* background-size: 200% 100%;
+  animation: gradient 30s ease infinite; */
   height: 500px;
   text-align: center;
 }
 
 /* @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
 
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-} */
 .mySlides {
   width: 100%;
   /* height: 340px; */
   height: 100%;
   float: center;
-  border-radius: 100px 100px 0px 0px;
+  border-radius: 150px 150px 0px 0px;
 
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
   margin: auto;
 }
 
 .myWidgets {
-  padding-top: 2px;
+  /* padding-top: 2px; */
   width: 100%;
+  color: #ffef90;
 }
 
 .slideshow-container {
   width: 100%;
   /* height: 340px; */
-  height: 360px;
+  height: 1500px;
   float: center;
   position: relative;
   margin: auto;
 
-  border-radius: 100px 100px 0px 0px;
-  background-image: radial-gradient(
+  border-radius: 150px 150px 0px 0px;
+  /* background-color: #00223b; */
+  background-color: #00223b32;
+  /* background-image: radial-gradient(
     circle farthest-corner at 16.5% 28.1%,
     #00223b 0%,
     black 90%
   );
   background-size: 150% 100%;
-}
+} */
 
 .htext {
   /* color:#003836; */
@@ -80,18 +84,11 @@ body {
   padding-left: 30px;
   padding-top: 2px;
   padding-bottom: 7px;
-  font-size: 250%;
 }
 
 .htext2 {
   /* color:#003836; */
-  color: #ffffff;
-  background-color: #ed8700;
-  border-radius: 80px;
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-top: 2px;
-  padding-bottom: 7px;
+  color: #ffef90;
 }
 
 /* Fading animation */
@@ -101,55 +98,69 @@ body {
 }
 
 /* @keyframes fade {
-  from {
-    opacity: .4
-  }
-
-  to {
-    opacity: 1
-  }
-} */
+    from {
+      opacity: .4
+    }
+  
+    to {
+      opacity: 1
+    }
+  } */
 
 /* @-webkit-keyframes fade {
-  0% {
-    opacity: 1;
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    34% {
+      opacity: 0;
+    }
+    88% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  20% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 0;
-  }
-  88% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 1;
-  }
-  34% {
-    opacity: 0;
-  }
-  88% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} */
+  
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    34% {
+      opacity: 0;
+    }
+    88% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  } */
 
 table {
+  border-color: rgba(255, 255, 255, 0.300);
   border-collapse: collapse;
   border-spacing: 0;
   width: 90%;
+}
+
+th:not(:last-child) {
+  border-bottom: 2px solid #dddddd4f;
+  border-right: 2px solid #dddddd4f;
+}
+
+th:not(:first-child) {
+  border-bottom: 2px solid #dddddd4f;
+}
+
+th:not(:last-child) {
+  border-bottom: 2px solid #dddddd4f;
 }
 
 #scroll-text {

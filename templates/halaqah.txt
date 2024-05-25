@@ -1,0 +1,20 @@
+      <!-- HALAQAH -->
+      <div class="mySlides fade" style="background-image: url('static/background.png');background-position: right;width:100%;" hidden>
+        <!-- add this for correct scale >>> background-size: auto 100%; -->
+        <div style="padding-left: 50px; padding-top: 3%; text-align:center;">
+          <div style="height: 200px; width: 200px; background-image: url('static/halaqahcal.svg'); background-size: auto 100%; float: left;display: flex;
+              justify-content: center;
+              align-items: center;"></div>
+          <div style="text-align:left;">
+              <div>
+                <b style="font-size:450%; color:#ed8700; text-align:left; padding-left: 2.0%;">Monthly Halaqah</b>
+              </div>
+              <div>
+                <b style="font-size:250%; padding-top: 10px; text-align:left; padding-left: 2.8%;">Qur'aan • Hadith • Talk • Dhikr • Du'aa</b>
+              </div>
+          </div>
+        </div>
+        <div style="padding-top: 20px; padding-left: 2.8%;">
+          <b class="htext">TODAY after Isha Salah</b>
+        </div>
+      </div>

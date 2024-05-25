@@ -22,7 +22,7 @@ $.fn.hijriDate = function (options = {}) {
   };
   const hijriMonths = {
     ar: ["المحرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"],
-    en: ["Muharram", "Safar", "Rabi Al-Awwal", "Rabi Al-Akhar", "Jumada Al-Awwal", "Jumada Al-Akhirah", "Rajab", "Shaban", "Ramadan", "Shawwal", "Dhu Al-Qidah", "Dhul Al-Hijjah"]
+    en: ["Muharram", "Safar", "Rabi Al-Awwal", "Rabi Ath-Thani", "Jumada Al-Ula", "Jumada Al-Ukhra", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhul-Qa'dah", "Dhul-Hijjah"]
   };
   const gregMonths = {
     ar: ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
@@ -32,7 +32,7 @@ $.fn.hijriDate = function (options = {}) {
   const gregSymbol = (defaultOptions.gregLang === 'ar') ? 'م' : '';
   let fixed;
 
-  // check if it is an Gregorian leap year
+  // check if it is a Gregorian leap year
   function isGregLeapYear(year) {
     return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
   }
@@ -52,6 +52,20 @@ $.fn.hijriDate = function (options = {}) {
 
     return 1 - 1 + 365 * (year - 1) + a - b + c + d + e + (day + defaultOptions.correction);
   }
+
+const nth = function(da) {
+	if (da > 3 && da < 21) return 'th';
+	switch (da % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
 
   function Hijri(year, month, day) {
     this.year = year;
@@ -81,6 +95,7 @@ $.fn.hijriDate = function (options = {}) {
     i2.month = i.month;
     i2.day = 1;
     i.day = f - i2.toFixed() + 1;
+    i.day = i.day + nth(i.day)
     return i;
   }
 
@@ -92,9 +107,19 @@ $.fn.hijriDate = function (options = {}) {
     `${defaultOptions.separator} <span class="greg-date">${d} ${gregMonths[defaultOptions.gregLang][m]} ${y} ${gregSymbol}</span>` : '';
 
   m++;
+  
   fixed = gregToFixed(y, m, d);
-  let h = new Hijri(1421, 11, 28);
+  let h = new Hijri(1421, 0, 0);
   h = fixedToHijri(fixed);
+
+  // fixed2 = gregToFixed(m);
+  // let h2 = new Hijri(1421, 11, 28);
+  // h2 = fixedToHijri(fixed2);
+
+  // fixed3 = gregToFixed(d);
+  // let h3 = new Hijri(28);
+  // h3 = fixedToHijri(fixed3);
+  // h3 = nth(h3);
 
   const weekDay = defaultOptions.showWeekDay ? weekDays[defaultOptions.weekDayLang][dow] : '';
   const hijriDate = `${h.toString()} ${hijriSymbol}`;

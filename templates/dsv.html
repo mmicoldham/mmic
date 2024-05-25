@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 
 <head>
-  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/stylev.css">
   <title>Mosque Clock by Ukasa</title>
-  <link rel="icon" href="static/icon.ico" sizes="32x32" />
+  <link rel="icon6" href="static/icon2.ico" sizes="32x32" />
   <script src="static/script.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet" />
 </head>
@@ -21,19 +21,19 @@
     <!--START OF CONTENT-->
     <br>
     <img class="myclass" src="static/MMICLogo.png"
-      style="width:170px;height:auto;" />
+      style="width:230px;height:auto;" />
 
     <br />
     <div id="clockdate">
       <div class="clockdate-wrapper"><b>
-        <div id="clock" style="font-size: 450%;align:left;padding-bottom:5px;"></div>
+        <div id="clock" style="font-size: 700%;align:left;padding-bottom:5px;"></div>
         
-        <div class="myTexts fade">
+        <!-- <div class="myTexts fade">
           <b style="font-size:150%; width:100%; background-image: url('static/social.png'); background-size: auto 103.5%;padding-left: 53.89%; background-position: center;"></b>
-        </div>
+        </div> -->
         
-        <div class="myTexts fade">
-          <b style="font-size: 150%;"><b class="hijri"></b> • <b id="date"></b><b id="ccb--disabled"></b></b></b>
+        <div class="myTexts fade" style="padding-bottom:2%;">
+          <b style="font-size: 250%;"><b class="hijri"></b> <br> <b id="date"></b><b id="ccb--disabled"></b></b></b>
         </div>
         
         
@@ -44,65 +44,57 @@
     <br height="10px">
     <div class="slideshow-container">
 
-      <!-- <div class="mySlides fade" style="background-image: url('static/PS.png');background-position: center;width:100%; background-size: auto 100%;"></div> -->
-        
+     <!-- <div class="mySlides fade" style="background-image: url('static/PS.png');background-position: center;width:100%; background-size: auto 100%;"></div> -->
 
-
- 
         
-        
-
+      
 
       
       
       <div class="mySlides fade" style="background-image: url('static/background.png');
-  background-position: right;
+  background-position: center;  padding-top: 4%;
   overflow-x:auto;">
 
-        <table style="font-size:200%; border-spacing: 0.2em; padding-bottom: 10px;">
+        <table style="font-size:350%; line-height: 2.0;">        
           <tr>
-            <th style="text-align:right"></th>
-            <th style="text-align:center">Fajr</th>
-            <th style="text-align:center" id="jumuah">{{jumuah}}</th>
-            <th style="text-align:center">Asr</th>
-            <th style="text-align:center">Maghrib</th>
-            <th style="text-align:center">Isha</th>
+            <th style="text-align:center;">Salah</th>
+            <th style="text-align: center; border-radius: 80px 0px 0px 80px;">Jama'at</th>
+            <!-- <th style="text-align: center; border-radius: 0px 80px 80px 0px;">Jama’at</th> -->
           </tr>
-          <br>
           <tr>
-            <td style="text-align: center">Begins</td>
-            <td style="text-align:center">{{fajr}}</td>
-            <td style="text-align:center">{{dhuhr}}</td>
-            <td style="text-align:center">{{asr}}</td>
-            <td style="text-align:center">{{maghrib}}</td>
-            <td style="text-align:center">{{isha}}</td>
-          </tr>
-          <br>
-          <tr>
-            <th style="text-align: center">Jama’at</th>
+            <th style="text-align:center;">Fajr</th>
+            <!-- <td style="text-align:center">{{fajr}}</td> -->
             <th style="text-align:center">{{fajrj}}</th>
+          </tr>
+          <tr>
+            <th style="text-align:center;" id="jumuah">{{jumuah}}</th>
+            <!-- <td style="text-align:center">{{dhuhr}}</td> -->
             <th style="text-align:center">{{dhuhrj}}</th>
+          </tr>
+          <tr>
+            <th style="text-align:center;">Asr</th>
+            <!-- <td style="text-align:center">{{asr}}</td> -->
             <th style="text-align:center">{{asrj}}</th>
+          </tr>
+          <tr>
+            <th style="text-align:center;">Maghrib</th>
+            <!-- <td style="text-align:center">{{maghrib}}</td> -->
             <th style="text-align:center">{{maghribj}}</th>
+          </tr>
+          <tr>
+            <th style="text-align:center; border-radius: 0px 0px 80px 80px;">Isha</th>
+            <!-- <td style="text-align:center">{{isha}}</td> -->
             <th style="text-align:center">{{ishaj}}</th>
-
+          </tr>
+          <tr>
             <p id="fajrb" hidden>{{fajrb}}</p>
             <p id="fajrc" hidden>{{fajrc}}</p>
             <p id="mysunc" hidden>{{mysunc}}</p>
-            
-            <p id="dhuhrb" hidden>{{dhuhrb}}</p>
             <p id="dhuhrc" hidden>{{dhuhrc}}</p>
-            
-            <p id="asrb" hidden>{{asrb}}</p>
             <p id="asrc" hidden>{{asrc}}</p>
-            
-            <p id="maghribb" hidden>{{maghribb}}</p>
             <p id="maghribc" hidden>{{maghribc}}</p>
-            
-            <p id="ishab" hidden>{{ishab}}</p>
             <p id="ishac" hidden>{{ishac}}</p>
             <p id="isha2c" hidden>{{isha2c}}</p>
-            
             <p id="fajrt" hidden>{{fajrt}}</p>
           </tr>
         </table> 
@@ -111,7 +103,8 @@
           <b id="cc2" style="font-size:250%;"></b>
         </div> -->
         <div class="myWidgets fade">
-            <div><b class="htext"><b id="ccc"></b><b id="cc"></b></b></div>
+            <div><b id="ccc" style="font-size:350%;"></b></div>
+            <div><b class="htext2" id="cc" style="font-size:350%;"></b></div>
           </div>
         </div>
       <!-- <div class="mySlides fade" style="background-image: url('static/background.png');
