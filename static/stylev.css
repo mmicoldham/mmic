@@ -21,7 +21,7 @@ body {
 
   /* background-size: 200% 100%;
   animation: gradient 30s ease infinite; */
-  height: 500px;
+  height: 1920px;
   text-align: center;
 }
 
@@ -66,7 +66,8 @@ body {
 
   border-radius: 150px 150px 0px 0px;
   /* background-color: #00223b; */
-  background-color: #00223b32;
+/*  background-color: #00223b32;*/
+    background-color: #001432;
   /* background-image: radial-gradient(
     circle farthest-corner at 16.5% 28.1%,
     #00223b 0%,

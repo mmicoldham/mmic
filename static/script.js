@@ -5,7 +5,7 @@
  */
 
 var myIndex = 0;
-carousel();
+var slideIntervals = [25000, 25000, 25000]; // Example intervals for each slide in milliseconds
 
 function carousel() {
   var i;
@@ -18,8 +18,30 @@ function carousel() {
     myIndex = 1;
   }
   x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 25000); // Change image every 25 seconds
+
+  // Use the specific timeout for the current slide
+  var timeout = slideIntervals[myIndex - 1];
+  setTimeout(carousel, timeout);
 }
+
+// Start the carousel
+carousel();
+
+
+//
+// function carousel() {
+//   var i;
+//   var x = document.getElementsByClassName("mySlides");
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";
+//   }
+//   myIndex++;
+//   if (myIndex > x.length) {
+//     myIndex = 1;
+//   }
+//   x[myIndex - 1].style.display = "block";
+//   setTimeout(carousel, 25000); // Change image every 25 seconds
+// }
 
 var myIndex2 = 0;
 carousel2();
@@ -102,7 +124,7 @@ setInterval(function masjidClock() {
     am_pm = "PM";
   }
 
-  hour = hour < 10 ? "0" + hour : hour;
+  hour = hour < 10 ? hour : hour;
   min = min < 10 ? "0" + min : min;
   sec = sec < 10 ? "0" + sec : sec;
 
@@ -201,7 +223,7 @@ setInterval(function masjidClock() {
 
   // Find the distance between now and the count down date
   var distance = countDownDate - now;
-  distance = distance + 60000;
+  distance = distance + 1000;
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -222,8 +244,12 @@ setInterval(function masjidClock() {
   document.getElementById("cc").innerHTML =
     hours + " hour" + s + " & " + minutes + " minute" + s2;
   if (hours == 0) {
-    document.getElementById("cc").innerHTML = minutes + " minute" + s2;
+    document.getElementById("cc").innerHTML = minutes + " minute" + s2 + " & " + seconds + " seconds";
   }
+
+  //Display the result in the element with id="cc" SIMPLIFIED
+  //document.getElementById("cc").innerHTML = hours + ":" + minutes + ":" + seconds;
+
   //ccc will be just the time remaining.
   document.getElementById("ccc").innerHTML = salah + " in ";
 
@@ -414,7 +440,7 @@ function refreshAt(hours, minutes, seconds) {
 
 refreshAt(0, 0, 0); //Will refresh the page at 0:00
 refreshAt(0, 1, 0); //Will refresh the page at 0:01
-refreshAt(1, 0, 0); //Will refresh the page at 1:00
-refreshAt(1, 1, 0); //Will refresh the page at 1:01
-refreshAt(2, 0, 0); //Will refresh the page at 2:00
-refreshAt(2, 1, 0); //Will refresh the page at 2:01
+//refreshAt(1, 0, 0); //Will refresh the page at 1:00
+//refreshAt(1, 1, 0); //Will refresh the page at 1:01
+//refreshAt(2, 0, 0); //Will refresh the page at 2:00
+//refreshAt(2, 1, 0); //Will refresh the page at 2:01
