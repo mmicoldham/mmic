@@ -3,4 +3,4 @@
 
 This is a Python-based HTML site that displays the prayer timetable for a local Masjid. It scrapes timetable data from another website and is intended to be displayed on the Masjid's TV screens.
 
-The project is created and maintained by Ukasa (https://github.com/mdukasa)
+The project is created and maintained by: (https://github.com/mdukasa)
